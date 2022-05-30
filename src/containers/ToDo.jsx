@@ -26,13 +26,30 @@ function ToDo() {
     setTodos(newTodos);
   };
 
+  // Fungsi ini akan membuat sebuah array yang baru
+  // dan memodifikasi satu baris data yang ditemukan
+  // untuk membuat isCompleted nya menjadi true
+  // berdasarkan idTodo yang diterima
+  const completeTodo = (idTodo) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === idTodo) {
+        todo.isCompleted = true;
+      }
+
+      return todo;
+    });
+
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <div>Aplikasi ToDo</div>
       {/* Kita tambahkan component ToDoForm dan ToDoTable */}
       {/* Jangan lupa untuk passing props todos ke dalam ToDoTable */}
       <ToDoForm fnAddTodos={addTodos} />
-      <ToDoTable todos={todos} />
+      {/* Jangan lupa tambahkan props fnCompleteToDo ke dalam table */}
+      <ToDoTable todos={todos} fnCompleteTodo={completeTodo} />
     </>
   );
 }

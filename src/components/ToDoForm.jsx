@@ -13,7 +13,7 @@ function ToDoForm(props) {
     event.preventDefault();
     // Panggil props fnAddTodos
     props.fnAddTodos(inputData);
-    // Kosongkan lagi
+    // Kosongkan lagi input
     setInputData("");
   };
 
