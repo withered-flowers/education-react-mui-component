@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // Import ToDoForm dan ToDoTable
 import ToDoForm from "../components/ToDoForm.jsx";
 import ToDoTable from "../components/ToDoTable.jsx";
+// Import component Typography dari MUI
+import { Typography } from "@mui/material";
 
 function ToDo() {
   // Sekarang state kita berbentuk array of object !
@@ -44,7 +46,8 @@ function ToDo() {
 
   return (
     <>
-      <div>Aplikasi ToDo</div>
+      {/* Ganti div menjadi Typography */}
+      <Typography variant="h5">Aplikasi ToDo</Typography>
       {/* Kita tambahkan component ToDoForm dan ToDoTable */}
       {/* Jangan lupa untuk passing props todos ke dalam ToDoTable */}
       <ToDoForm fnAddTodos={addTodos} />

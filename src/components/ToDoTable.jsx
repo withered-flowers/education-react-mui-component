@@ -1,4 +1,13 @@
 import React from "react";
+// Import Component MUI di sini
+import {
+  Button,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@mui/material";
 
 function ToDoTable(props) {
   // Perhatikan fungsi ini tidak menerima event
@@ -9,39 +18,45 @@ function ToDoTable(props) {
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>ToDo Id</th>
-          <th>ToDo Name</th>
-          <th>ToDo Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
+    // Gunakan Component MUI di sini
+    <Table sx={{ maxWidth: 650 }}>
+      <TableHead>
+        <TableRow>
+          <TableCell>ToDo Id</TableCell>
+          <TableCell>ToDo Name</TableCell>
+          <TableCell>ToDo Status</TableCell>
+          <TableCell>Action</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
         {/* Asumsi nama props adalah todos */}
         {props.todos.map((todo) => (
-          <tr key={todo.id}>
-            <td>{todo.id}</td>
-            <td>{todo.name}</td>
-            <td>{todo.isCompleted ? "Selesai" : "Belum Selesai"}</td>
+          <TableRow key={todo.id}>
+            <TableCell>{todo.id}</TableCell>
+            <TableCell>{todo.name}</TableCell>
+            <TableCell>
+              {todo.isCompleted ? "Selesai" : "Belum Selesai"}
+            </TableCell>
             {/* Nanti kita akan kembali ke sini lagi */}
-            <td>
+            <TableCell>
               {todo.isCompleted ? (
                 ""
               ) : (
                 // onClick di sini akan menggunakan fungsi arrow
                 // untuk bisa memanggil fungsi btnOnClickHandler
                 // sambil passing value todo.id
-                <button onClick={() => btnOnClickHandler(todo.id)}>
+                <Button
+                  variant="contained"
+                  onClick={() => btnOnClickHandler(todo.id)}
+                >
                   Selesaikan
-                </button>
+                </Button>
               )}
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 }
 
